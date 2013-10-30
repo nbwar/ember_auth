@@ -30,4 +30,12 @@ describe User do
       expect(user.remember_token).to_not be_nil
     end
   end
+
+  context 'api' do
+    it '#session_api_key' do
+      api_key = user.session_api_key
+      api_key.access_token =~ /\S{32}/
+      api_key.user_id.should eq user.id
+    end
+  end
 end

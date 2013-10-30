@@ -1,7 +1,7 @@
 MealPlanner::Application.routes.draw do
   root to: 'home#index'
 
-  resource :users
+  resource :users, except: [:new, :edit, :destroy]
   resource :sessions, only: [:create]
 
   get '/signup' => 'users#new', as: 'signup'
