@@ -12,4 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require handlebars
+//= require ember
+//= require ember-data
+//= require_self
+//= require meal_planner
+
+// for more details see: http://emberjs.com/guides/application/
+MealPlanner = Ember.Application.create();
+
 //= require_tree .

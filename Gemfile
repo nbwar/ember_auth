@@ -9,6 +9,8 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'haml-rails'
+gem 'ember-rails'
+gem 'ember-source'
 
 group :doc do
   gem 'sdoc', require: false
