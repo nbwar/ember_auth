@@ -1,0 +1,17 @@
+common: &common
+  adapter: postgresql
+  host: localhost
+  timeout: 5000
+
+development:
+  <<: *common
+  database: YOUR_APP_NAME_dev
+
+test:
+  <<: *common
+  database: YOUR_APP_NAME_test
+
+production:
+  <<: *common
+  database: YOUR_APP_NAME
+
