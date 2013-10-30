@@ -5,13 +5,13 @@ common: &common
 
 development:
   <<: *common
-  database: YOUR_APP_NAME_dev
+  database: meal_planner_dev
 
 test:
   <<: *common
-  database: YOUR_APP_NAME_test
+  database: meal_planner_test
 
 production:
   <<: *common
-  database: YOUR_APP_NAME
+  database: meal_planner
 
