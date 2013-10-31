@@ -16,6 +16,7 @@ class UsersController < ApplicationController
       render json: {errors: user.errors.message}, status: 422
     else
       render json: user.session_api_key, status: 201
+    end
   end
 
 
