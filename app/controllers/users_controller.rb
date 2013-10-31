@@ -11,6 +11,8 @@ class UsersController < ApplicationController
   end
 
   def create
+    p '*' * 1000
+    p user_params
     user = User.create(user_params)
     if user.new_record?
       render json: {errors: user.errors.full_messages}, status: 422
