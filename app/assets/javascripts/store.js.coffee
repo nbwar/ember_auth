@@ -4,5 +4,5 @@
 #   revision: 11
 #   adapter: DS.RESTAdapter.create()
 
-MealPlanner.ApplicationAdapter = DS.FixtureAdapter
+MealPlanner.ApplicationAdapter = DS.RESTAdapter
 

@@ -1,4 +1,9 @@
-# For more information see: http://emberjs.com/guides/routing/
-
 MealPlanner.Router.map ()->
+  @resource 'sessions', ->
+    @route 'new'
+
+  @resource 'users', ->
+    @route 'new'
+
+  @route 'top_secret'
 
