@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protected
-    def ensure_authenticat_user
-      head :anauthorized unless current_user
+    def ensure_authenticated_user
+      head :unauthorized unless current_user
     end
 
     def current_user
