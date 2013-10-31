@@ -1,6 +1,40 @@
 require 'spec_helper'
 
 describe UsersController do
+
+  it '#create' do
+    post 'create', {
+      user: {
+        username: 'nick',
+        email: 'nick@nick.com',
+        password: 'secret',
+        password_confirmation: 'secret'
+      }
+    }
+
+    results = JSON.parse(response.body)
+    results["api_key"]["access_token"] =~ /\S{32}/
+    results["api_key"]["user_id"].should_not be_nil
+  end
+
+  it '#create with invalid data' do
+    post 'create', {
+      user: {
+        username: '',
+        email: 'nick@nick.com',
+        password: 'secret',
+        password_confirmation: 'secret'
+      }
+    }
+
+    results = JSON.parse(response.body)
+    results['errors'].size.should be > 1
+
+  end
+
+
+
+
   # it '#new should render new template' do
   #   get :new
   #   response.should render_template('new')

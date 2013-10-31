@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def create
     user = User.create(user_params)
     if user.new_record?
-      render json: {errors: user.errors.message}, status: 422
+      render json: {errors: user.errors.full_messages}, status: 422
     else
       render json: user.session_api_key, status: 201
     end
