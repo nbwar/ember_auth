@@ -8,3 +8,7 @@ MealPlanner.Router.map ()->
 
   @route 'top_secret'
 
+# To remove # mark in URL but then can't refresh page
+# MealPlanner.Router.reopen
+  # location: 'history'
+
