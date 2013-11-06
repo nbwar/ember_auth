@@ -1,6 +1,5 @@
 MealPlanner.Router.map ()->
-  @resource 'sessions', ->
-    @route 'new'
+  @route 'login'
 
   @resource 'users', ->
     @route 'new'
