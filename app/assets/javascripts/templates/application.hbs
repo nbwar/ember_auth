@@ -1,8 +1,13 @@
 <ul>
 <li>{{#linkTo 'index'}}Home{{/linkTo}}</li>
 <li>{{#linkTo 'top_secret'}}Secret{{/linkTo}}</li>
-<li>{{#linkTo 'users.new'}}Register{{/linkTo}}</li>
-<li>{{#linkTo 'sessions.new'}}Login{{/linkTo}}</li>
+{{#if isAuthenticated}}
+  <li>{{currentUser.email}}</li>
+  <li><a href="#" {{action 'logout'}}>Logout</a></li>
+{{else}}
+  <li>{{#linkTo 'users.new'}}Register{{/linkTo}}</li>
+  <li>{{#linkTo 'sessions.new'}}Login{{/linkTo}}</li>
+{{/if}}
 
 </ul>
 

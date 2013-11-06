@@ -5,4 +5,3 @@ MealPlanner.ApplicationRoute = Ember.Route.extend
       store: @store
     }
 
-    # MealPlanner.AuthManager.init(@store.get('store'))

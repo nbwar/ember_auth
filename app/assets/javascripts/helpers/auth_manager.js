@@ -14,6 +14,11 @@ var AuthManager = Ember.Object.extend({
     return !Ember.isEmpty(this.get('apiKey.accessToken')) && !Ember.isEmpty(this.get('apiKey.user'))
   },
 
+  currentUser: function() {
+    console.log(this.get('apiKey').user);
+    return this.get('apiKey').user
+  },
+
   authenticate: function(accessToken, userId, store) {
     $.ajaxSetup({
       headers: {'Authorization': 'Bearer ' + accessToken }
