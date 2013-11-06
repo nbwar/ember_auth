@@ -4,7 +4,7 @@ MealPlanner::Application.routes.draw do
   resources :users, except: [:new, :edit, :destroy]
   resource :sessions, only: [:create]
 
-  get '/signup' => 'users#new', as: 'signup'
-  get '/login' => 'sessions#new', as: 'login'
+  post '/signup' => 'users#new', as: 'signup'
+  post '/login' => 'sessions#create', as: 'login'
   delete '/logout' => 'sessions#destroy'
 end

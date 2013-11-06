@@ -28,7 +28,7 @@ var AuthManager = Ember.Object.extend({
   },
 
   reset: function() {
-    MealPlanner.__container__.lookup("route:application").transitionTo('sessions.new');
+    MealPlanner.__container__.lookup("route:application").transitionTo('index');
     Ember.run.sync();
     Ember.run.next(this, function() {
       this.set('apiKey', null);

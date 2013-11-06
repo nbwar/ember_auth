@@ -1,3 +1,3 @@
-MealPlanner.LoginRouter = Ember.Router.extend
-  setupController: (controller, content) ->
-    controller.reset()
+MealPlanner.LoginRoute = Ember.Route.extend
+  model: () ->
+    Ember.Object.create()
