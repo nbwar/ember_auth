@@ -14,36 +14,23 @@ var AuthManager = Ember.Object.extend({
     return !Ember.isEmpty(this.get('apiKey.accessToken')) && !Ember.isEmpty(this.get('apiKey.user'))
   },
 
-  currentUser: function() {
-    console.log(this.get('apiKey').user);
-    return this.get('apiKey').user
-  },
-
   authenticate: function(accessToken, userId, store) {
     $.ajaxSetup({
       headers: {'Authorization': 'Bearer ' + accessToken }
     });
     _this = this;
-    var user = store.find('user', userId).then(function(response) {
+    store.find('user', userId).then(function(response) {
       _this.set('apiKey', MealPlanner.ApiKey.create({
         accessToken: accessToken,
         user: response
       }));
     });
-
-
-    // this.set('apiKey', store.createRecord( 'ApiKey', {
-    //   accessToken: accessToken,
-    //   user: userId
-    // }));
-
   },
 
   reset: function() {
     MealPlanner.__container__.lookup("route:application").transitionTo('sessions.new');
     Ember.run.sync();
     Ember.run.next(this, function() {
-      // TODO Change to set accessToken & userId to null
       this.set('apiKey', null);
       $.ajaxSetup({
         headers: { 'Authorization': 'Bearer none'}
@@ -51,7 +38,6 @@ var AuthManager = Ember.Object.extend({
     });
   },
   apiKeyObserver: function() {
-    // TODO change to this.get('accessToken') && this.get('userId')
     if (Ember.isEmpty(this.get('apiKey'))) {
       $.removeCookie('access_token');
       $.removeCookie('auth_user');
