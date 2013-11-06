@@ -4,5 +4,7 @@ MealPlanner.Router.map ()->
   @resource 'users', ->
     @route 'new'
 
+  @route 'signup'
+
   @route 'top_secret'
 
