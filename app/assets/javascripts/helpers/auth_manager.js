@@ -1,10 +1,12 @@
 var AuthManager = Ember.Object.extend({
   init: function() {
+    var store = this.get('store');
     this._super();
     var accessToken = $.cookie('access_token');
     var authUserId = $.cookie('auth_user');
     if(!Ember.isEmpty(accessToken) && !Ember.isEmpty(authUserId)) {
-      this.authenticate(accessToken, authUserId);
+      window.blah = this;
+      this.authenticate(accessToken, authUserId, store);
     }
   },
 
@@ -16,31 +18,14 @@ var AuthManager = Ember.Object.extend({
     $.ajaxSetup({
       headers: {'Authorization': 'Bearer ' + accessToken }
     });
+    _this = this;
+    var user = store.find('user', userId).then(function(response) {
+      _this.set('apiKey', MealPlanner.ApiKey.create({
+        accessToken: accessToken,
+        user: response
+      }));
+    });
 
-    // TODO UNCOMMENT THESE TO DO OTHER TODOS
-    // this.set('accessToken', accessToken);
-    // this.set('userId', userId);
-
-
-    // var user = MealPlanner.get('user', userId);
-    // console.log(this.get('accessToken'));
-    // console.log(this.get('userId'));
-    // var store = MealPlanner.get('store');
-    // var store = MealPlanner.Store;
-    // var user = store.get('user', userId);
-    // var api = MealPlanner.ApiKey.createRecord({
-    //   accessToken: '123232323'
-    // });
-
-    // TODO FIGURE OUT HOW TO GET ACCESS TO USER
-    // var user = MealPlanner.store.find('user', userId);
-    // console.log('USER in auth manager');
-    // console.log(user);
-
-    this.set('apiKey', MealPlanner.ApiKey.create({
-      accessToken: accessToken,
-      user: user
-    }));
 
     // this.set('apiKey', store.createRecord( 'ApiKey', {
     //   accessToken: accessToken,
@@ -66,8 +51,8 @@ var AuthManager = Ember.Object.extend({
       $.removeCookie('access_token');
       $.removeCookie('auth_user');
     } else {
-      $.cookie('access_token', this.get('apiKey.accessoken'));
-      $.cookie('auth_user', this.get('apiKey.user'));
+      $.cookie('access_token', this.get('apiKey.accessToken'));
+      $.cookie('auth_user', this.get('apiKey.user.id'));
     }
   }.observes('apiKey')
 });

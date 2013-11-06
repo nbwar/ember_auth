@@ -1,5 +1,6 @@
 MealPlanner.UsersNewRoute = Ember.Route.extend
   model : () ->
-    # MealPlanner.User.create
-    this.store.createRecord('user')
+    @store.createRecord('user')
+  setupController: (controller, model) ->
+    @controller.set('model', model)
 

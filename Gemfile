@@ -10,7 +10,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'haml-rails'
 gem 'ember-rails'
-gem 'ember-source'
+gem 'ember-source', '1.1.2'
 
 group :doc do
   gem 'sdoc', require: false
