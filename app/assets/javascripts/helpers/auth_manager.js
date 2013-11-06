@@ -38,7 +38,7 @@ var AuthManager = Ember.Object.extend({
     });
   },
   apiKeyObserver: function() {
-    if (Ember.isEmpty(this.get('apiKey'))) {
+      if (Ember.isEmpty(this.get('apiKey'))) {
       $.removeCookie('access_token');
       $.removeCookie('auth_user');
     } else {
