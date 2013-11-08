@@ -4,21 +4,25 @@
   <div>
     <label>Email Address</label>
     {{input type="email" value=email placeholder="Email Address"}}
+    <small class="below">{{errors.email}}</small>
   </div>
 
   <div>
     <label>Username</label>
     {{input type="text" value=username placeholder="Username"}}
+    <small class="below">{{errors.username}}</small>
   </div>
 
   <div>
     <label>Password</label>
     {{input type="password" value=password placeholder="Password"}}
+    <small class="below">{{errors.password}}</small>
   </div>
 
   <div>
     <label>Confirm Password</label>
     {{input type="password" value=password_confirmation placeholder="Confirm Password"}}
+    <small class="below">{{errors.password_confirmation}}</small>
   </div>
 
   <br>

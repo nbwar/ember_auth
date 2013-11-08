@@ -14,7 +14,7 @@ MealPlanner.LoginController = Ember.ObjectController.extend
           attemptedTrans.retry()
           _this.set('attemptedTransition', null)
         else
-          _this.set('model', "");
+          _this.set('model', "")
           router.transitionTo('index')
 
 

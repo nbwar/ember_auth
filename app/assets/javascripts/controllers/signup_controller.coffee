@@ -4,8 +4,9 @@ MealPlanner.SignupController = Ember.ObjectController.extend
       _this = @
       router = @get('target')
       data = @getProperties('username', 'email', 'password', 'password_confirmation')
+      user = @get('model')
 
-      $.post '/users', { user: data }, (response) ->
+      $.post('/users', { user: data }, (response) ->
         _this.store.push 'user', {
           id: response.api_key.user_id,
           username: data['username'],
@@ -15,3 +16,8 @@ MealPlanner.SignupController = Ember.ObjectController.extend
         _this.set('model', _this.store.createRecord('user'));
         router.transitionTo('index')
         # _this.transitionToRoute('index')
+      ).fail (jqxhr, textStatus, error) ->
+        if jqxhr.status == 422
+          errs = JSON.parse(jqxhr.responseText)
+          user.set('errors', errs.errors)
+
