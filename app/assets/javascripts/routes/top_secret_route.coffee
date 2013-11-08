@@ -1,4 +1,4 @@
-MealPlanner.TopSecretRoute = Ember.Route.extend
+MealPlanner.TopSecretRoute = MealPlanner.AuthenticatedRoute.extend
   setupController: (controller) ->
     @controller.set('model', @store.find('user'))
 
