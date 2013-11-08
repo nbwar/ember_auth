@@ -29,7 +29,7 @@ describe UsersController do
     }
 
     results = JSON.parse(response.body)
-    results['errors'].size.should be > 1
+    results['errors']['username'].size.should be > 1
   end
 
   it '#show' do
