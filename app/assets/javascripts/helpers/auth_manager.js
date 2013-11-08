@@ -42,7 +42,7 @@ var AuthManager = Ember.Object.extend({
       $.removeCookie('access_token');
       $.removeCookie('auth_user');
     } else {
-      $.cookie(q'access_token', this.get('apiKey.accessToken'));
+      $.cookie('access_token', this.get('apiKey.accessToken'));
       $.cookie('auth_user', this.get('apiKey.user.id'));
     }
   }.observes('apiKey')
